@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataContext">
+  <DataContextMoniker Name="/DataContextDataContext" />
+  <nestedChildShapes>
+    <classShape Id="56c60aed-2e36-4b61-b0e1-7efdc1da3348" absoluteBounds="1.5, 2.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DataContextDataContext/Klientat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3f773d1f-6d2f-4235-a7de-cee5ed245f26" absoluteBounds="1.5150000000000001, 3.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7fa2debe-1fd4-4688-967d-15db91ad5036" absoluteBounds="4.625, 1.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/DataContextDataContext/Faturat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="df012003-9528-4426-92fb-bafb92f3fff0" absoluteBounds="4.64, 2.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 3.13544840494792); (4.625 : 3.13544840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/DataContextDataContext/Klientat/Klientat_Faturat" />
+      <nodes>
+        <classShapeMoniker Id="56c60aed-2e36-4b61-b0e1-7efdc1da3348" />
+        <classShapeMoniker Id="7fa2debe-1fd4-4688-967d-15db91ad5036" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
