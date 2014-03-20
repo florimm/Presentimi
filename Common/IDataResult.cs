@@ -16,4 +16,14 @@ namespace Common
 
         List<Klienti> Execute();
     }
+
+    public interface IAdd
+    {
+        void Add(Klienti k);
+    }
+
+    public interface IUpdate
+    {
+        void Update(Klienti k);
+    }
 }

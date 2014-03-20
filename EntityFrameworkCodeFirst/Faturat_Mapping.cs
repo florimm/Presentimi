@@ -19,7 +19,7 @@ namespace EntityFrameworkCodeFirst
     using System.Data.Entity.Infrastructure;
     
     using System.ComponentModel.DataAnnotations.Schema;
-    internal partial class Faturat_Mapping : EntityTypeConfiguration<Faturat>
+    internal partial class Faturat_Mapping : EntityTypeConfiguration<Fatura>
     {
         public Faturat_Mapping()
         {					
@@ -30,9 +30,7 @@ namespace EntityFrameworkCodeFirst
     		this.Property(t => t.Nr).HasColumnName("Nr").IsRequired().HasMaxLength(50);
     		this.Property(t => t.Data).HasColumnName("Data");
     		this.Property(t => t.Shuma).HasColumnName("Shuma");
-    		this.HasRequired(t => t.Klientat).WithMany(t => t.Faturats).HasForeignKey(d => d.KlientiID);
-    		Initialize();
+    		this.HasRequired(t => t.Klienti).WithMany(t => t.Faturat).HasForeignKey(d => d.KlientiID);
     	}
-    	partial void Initialize();
     }
 }

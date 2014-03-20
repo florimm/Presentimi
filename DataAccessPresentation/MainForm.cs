@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using StructureMap;
@@ -28,6 +21,25 @@ namespace DataAccessPresentation
         {
             var dr = ObjectFactory.GetNamedInstance<IDataResult>(cboAccessData.SelectedItem + "." + "DataAccess");
             var result = dr.Execute();
+            foreach (var klienti in result)
+            {
+                var ki = new KlientiListViewItem(klienti);
+                lvKlientet.Items.Add(ki);
+            }
+        }
+
+        private void lvKlientet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvKlientet.SelectedItems.Count > 0)
+            {
+                var klv = (KlientiListViewItem) lvKlientet.SelectedItems[0];
+                lvFaturat.Items.Clear();
+                foreach (var fatura in klv.Klienti.Faturat)
+                {
+                    var flv = new FaturaListViewItem(fatura);
+                    lvFaturat.Items.Add(flv);
+                }
+            }
         }
     }
 }

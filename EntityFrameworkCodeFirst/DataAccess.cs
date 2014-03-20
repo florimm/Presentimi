@@ -15,15 +15,38 @@ namespace EntityFrameworkCodeFirst
             get { return "EntityFrameworkCodeFirst"; }
         }
 
-        public List<Klienti> Execute()
+        public List<Common.Klienti> Execute()
         {
-            throw new NotImplementedException();
+            var con = new DataCon();
+            var ds = con.Klientat.Include(t => t.Faturat).ToList();
+            
         }
     }
 
     public class DataCon : DbContext
     {
-        
+        static DataCon()
+    	{ 
+    		Database.SetInitializer<DataCon>(null);
+    	}
+    	
+    	public DataCon() : base("name=DBContext")
+        {
+        }
+
+        public DataCon(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+    	{	
+    	}
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {		
+    		modelBuilder.Configurations.Add(new Faturat_Mapping());
+    		modelBuilder.Configurations.Add(new Klientat_Mapping());
+        }
+    	
+        public DbSet<Fatura> Faturat { get; set; }
+        public DbSet<Klienti> Klientat { get; set; }
     }
 
 

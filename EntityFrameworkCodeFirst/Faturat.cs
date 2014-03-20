@@ -13,7 +13,7 @@ namespace EntityFrameworkCodeFirst
     using System;
     using System.Collections.Generic;
     
-    public partial class Faturat
+    public class Fatura
     {
         public int ID { get; set; }
         public int KlientiID { get; set; }
@@ -21,6 +21,6 @@ namespace EntityFrameworkCodeFirst
         public System.DateTime Data { get; set; }
         public decimal Shuma { get; set; }
     
-        public virtual Klientat Klientat { get; set; }
+        public virtual Klienti Klienti { get; set; }
     }
 }

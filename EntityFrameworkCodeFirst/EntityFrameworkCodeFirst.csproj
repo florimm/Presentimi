@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBContext.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="Faturat.cs" />
     <Compile Include="Faturat_Mapping.cs" />

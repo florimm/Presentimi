@@ -13,18 +13,18 @@ namespace EntityFrameworkCodeFirst
     using System;
     using System.Collections.Generic;
     
-    public partial class Klientat
+    public class Klienti
     {
-        public Klientat()
+        public Klienti()
         {
-            this.Faturats = new HashSet<Faturat>();
+            this.Faturat = new HashSet<Fatura>();
         }
     
         public int ID { get; set; }
         public string Emri { get; set; }
         public string Mbiemri { get; set; }
         public string Adresa { get; set; }
-    
-        public virtual ICollection<Faturat> Faturats { get; set; }
+
+        public virtual ICollection<Fatura> Faturat { get; set; }
     }
 }

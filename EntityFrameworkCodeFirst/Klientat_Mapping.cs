@@ -19,7 +19,7 @@ namespace EntityFrameworkCodeFirst
     using System.Data.Entity.Infrastructure;
     
     using System.ComponentModel.DataAnnotations.Schema;
-    internal partial class Klientat_Mapping : EntityTypeConfiguration<Klientat>
+    public class Klientat_Mapping : EntityTypeConfiguration<Klienti>
     {
         public Klientat_Mapping()
         {					
@@ -29,9 +29,7 @@ namespace EntityFrameworkCodeFirst
     		this.Property(t => t.Emri).HasColumnName("Emri").IsRequired().HasMaxLength(50);
     		this.Property(t => t.Mbiemri).HasColumnName("Mbiemri").IsRequired().HasMaxLength(50);
     		this.Property(t => t.Adresa).HasColumnName("Adresa").IsRequired().HasMaxLength(50);
-    		Initialize();
     	}
-    	partial void Initialize();
     }
 }
 
