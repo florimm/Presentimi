@@ -15,7 +15,7 @@ namespace OtherDataAccess
         {
             System.Diagnostics.Debugger.Break();
             var rezultati = Rezultati();
-            Add(new Common.Klienti());
+            Add(Common.Klienti.Create());
             Update(rezultati[0]);
         }
         public string Name
@@ -29,7 +29,7 @@ namespace OtherDataAccess
             using (var conn = ConnectionFactory.Connection())
             {
                 string sql =
-                    "INSERT INTO [dbo].[Klientet]([Emri],[Mbiemri],[Adresa]) VALUES (@Emri,@Mbiemri,@Adresa)";
+                    "INSERT INTO [dbo].[Klientat]([Emri],[Mbiemri],[Adresa]) VALUES (@Emri,@Mbiemri,@Adresa)";
                 conn.Execute(sql,
                     new
                     {
@@ -46,7 +46,7 @@ namespace OtherDataAccess
             using (var conn = ConnectionFactory.Connection())
             {
                 string sql =
-                    "update [dbo].[Klientet] set [Emri] @Emri, [Mbiemri] = @Mbiemri, [Adresa] = @Adresa where ID = @ID";
+                    "update [dbo].[Klientat] set [Emri] = @Emri, [Mbiemri] = @Mbiemri, [Adresa] = @Adresa where ID = @ID";
                 conn.Execute(sql,
                     new
                     {

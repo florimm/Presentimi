@@ -26,9 +26,9 @@ namespace EntityFrameworkCodeFirst
     		this.HasKey(t => t.ID);		
     		this.ToTable("Klientat");
     		this.Property(t => t.ID).HasColumnName("ID");
-    		this.Property(t => t.Emri).HasColumnName("Emri").IsRequired().HasMaxLength(50);
-    		this.Property(t => t.Mbiemri).HasColumnName("Mbiemri").IsRequired().HasMaxLength(50);
-    		this.Property(t => t.Adresa).HasColumnName("Adresa").IsRequired().HasMaxLength(50);
+    		this.Property(t => t.Emri).HasColumnName("Emri").IsRequired().HasMaxLength(100);
+    		this.Property(t => t.Mbiemri).HasColumnName("Mbiemri").IsRequired().HasMaxLength(100);
+    		this.Property(t => t.Adresa).HasColumnName("Adresa").IsRequired().HasMaxLength(100);
     	}
     }
 }

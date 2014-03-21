@@ -17,7 +17,7 @@ namespace BEADO
         {
             System.Diagnostics.Debugger.Break();
             var rezultati = Rezultati();
-            Add(new Common.Klienti());
+            Add(Common.Klienti.Create());
             Update(rezultati[0]);
         }
 
@@ -91,7 +91,7 @@ namespace BEADO
             var conn = ConnectionFactory.Connection();
             try
             {
-                var cmd = new SqlCommand("INSERT INTO [dbo].[Klientet]([Emri],[Mbiemri],[Adresa]) VALUES (@Emri,@Mbiemri,@Adresa)", conn)
+                var cmd = new SqlCommand("INSERT INTO [dbo].[Klientat]([Emri],[Mbiemri],[Adresa]) VALUES (@Emri,@Mbiemri,@Adresa)", conn)
                 {
                     CommandType = CommandType.Text
                 };
@@ -113,7 +113,7 @@ namespace BEADO
             var conn = ConnectionFactory.Connection();
             try
             {
-                var cmd = new SqlCommand("update [dbo].[Klientet] set [Emri] @Emri, [Mbiemri] = @Mbiemri, [Adresa] = @Adresa where ID = @ID", conn)
+                var cmd = new SqlCommand("update [dbo].[Klientat] set [Emri] = @Emri, [Mbiemri] = @Mbiemri, [Adresa] = @Adresa where ID = @ID", conn)
                 {
                     CommandType = CommandType.Text
                 };

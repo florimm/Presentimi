@@ -10,7 +10,7 @@ namespace EntityFrameworkDBFirst
         {
             System.Diagnostics.Debugger.Break();
             var rezultati = Rezultati();
-            Add(new Common.Klienti());
+            Add(Common.Klienti.Create());
             Update(rezultati[0]);
         }
         public string Name

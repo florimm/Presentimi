@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Common
 {
@@ -20,6 +21,16 @@ namespace Common
             get { return this.Emri + " " + this.Mbiemri; }
         }
 
+        public static Klienti Create()
+        {
+            return
+                new Klienti()
+                {
+                    Adresa = "Shtimi " + DateTime.Now,
+                    Emri = "Filan " +  new Random().Next(1000),
+                    Mbiemri = "Fisteku"
+                };
+        }
         public override string ToString()
         {
             return this.EmriMbiemri + " " + "fatura (" + this.Faturat.Count  +")";

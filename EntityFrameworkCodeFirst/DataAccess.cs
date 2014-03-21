@@ -19,7 +19,7 @@ namespace EntityFrameworkCodeFirst
         {
             System.Diagnostics.Debugger.Break();
             var rezultati = Rezultati();
-            Add(new Common.Klienti());
+            Add(Common.Klienti.Create());
             Update(rezultati[0]);
         }
 
@@ -72,7 +72,7 @@ namespace EntityFrameworkCodeFirst
     		Database.SetInitializer<DataCon>(null);
     	}
     	
-    	public DataCon() : base("name=DBContext")
+    	public DataCon() : base(ConnectionFactory.ConnectionString())
         {
         }
 

@@ -44,5 +44,32 @@ namespace DataAccessPresentation
                 }
             }
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var dr = (IAdd)ObjectFactory.GetNamedInstance<IName>(cboAccessData.SelectedItem + "." + "DataAccess");
+            dr.Add(new Klienti { Adresa = "Shtimi nga " + cboAccessData.SelectedItem + " " + DateTime.Now, Emri = cboAccessData.SelectedItem + "", Mbiemri = cboAccessData.SelectedItem + "" });
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (lvKlientet.SelectedItems.Count > 0)
+            {
+                var lvItem = (KlientiListViewItem)lvKlientet.SelectedItems[0];
+                var dr = (IUpdate)ObjectFactory.GetNamedInstance<IName>(cboAccessData.SelectedItem + "." + "DataAccess");
+                var k = lvItem.Klienti;
+                k.Adresa = "Ndryshimi nga " + cboAccessData.SelectedItem + " " + DateTime.Now;
+                k.Emri = cboAccessData.SelectedItem + "";
+                k.Mbiemri = cboAccessData.SelectedItem + "";
+                dr.Update(k);
+            }
+        }
+
+        private void btnDebug_Click(object sender, EventArgs e)
+        {
+            var dr = (IExecutable)ObjectFactory.GetNamedInstance<IName>(cboAccessData.SelectedItem + "." + "DataAccess");
+            dr.Execute();
+
+        }
     }
 }
