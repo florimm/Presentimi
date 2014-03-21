@@ -6,17 +6,21 @@ using Common;
 
 namespace BEADO
 {
-    public class DataAccess : IDataResult
+    public class DataAccess : IExecutable, IDataResult, IAdd, IUpdate
     {
         public string Name
         {
             get { return "BEADO"; }
         }
 
-        public List<Klienti> Execute()
+        public void Execute()
         {
-            return MerrKlientet();
+            System.Diagnostics.Debugger.Break();
+            var rezultati = Rezultati();
+            Add(new Common.Klienti());
+            Update(rezultati[0]);
         }
+
 
         private List<Klienti> MerrKlientet()
         {
@@ -53,7 +57,7 @@ namespace BEADO
             var conn = ConnectionFactory.Connection();
             try
             {
-                var cmd = new SqlCommand("select * from Faturat where klientiId = @klientiID", conn){CommandType = CommandType.Text};
+                var cmd = new SqlCommand("select * from Faturat where klientiId = @klientiID", conn) { CommandType = CommandType.Text };
 
                 cmd.Parameters.AddWithValue("@klientiID", klienti.ID);
                 conn.Open();
@@ -70,6 +74,56 @@ namespace BEADO
                     pl.Add(p);
                 }
                 return pl;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Klienti> Rezultati()
+        {
+            return MerrKlientet();
+        }
+
+        public void Add(Klienti k)
+        {
+            var conn = ConnectionFactory.Connection();
+            try
+            {
+                var cmd = new SqlCommand("INSERT INTO [dbo].[Klientet]([Emri],[Mbiemri],[Adresa]) VALUES (@Emri,@Mbiemri,@Adresa)", conn)
+                {
+                    CommandType = CommandType.Text
+                };
+                cmd.Parameters.AddWithValue("@Emri", k.Emri);
+                cmd.Parameters.AddWithValue("@Mbiemri", k.Mbiemri);
+                cmd.Parameters.AddWithValue("@Adresa", k.Adresa);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void Update(Klienti k)
+        {
+            var conn = ConnectionFactory.Connection();
+            try
+            {
+                var cmd = new SqlCommand("update [dbo].[Klientet] set [Emri] @Emri, [Mbiemri] = @Mbiemri, [Adresa] = @Adresa where ID = @ID", conn)
+                {
+                    CommandType = CommandType.Text
+                };
+                cmd.Parameters.AddWithValue("@Emri", k.Emri);
+                cmd.Parameters.AddWithValue("@Mbiemri", k.Mbiemri);
+                cmd.Parameters.AddWithValue("@Adresa", k.Adresa);
+                cmd.Parameters.AddWithValue("@ID", k.ID);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+
             }
             finally
             {

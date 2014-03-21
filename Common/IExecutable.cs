@@ -6,15 +6,22 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public interface IDataResult
+    public interface IName
     {
         string Name
         {
-            get; 
-            
-        }
+            get;
 
-        List<Klienti> Execute();
+        }
+    }
+    public interface IExecutable : IName
+    {
+        void Execute();
+    }
+
+    public interface IDataResult
+    {
+        List<Klienti> Rezultati();
     }
 
     public interface IAdd

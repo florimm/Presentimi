@@ -104,6 +104,10 @@
       <Project>{11dc13a1-4816-4757-8a9b-ad9030ab0db2}</Project>
       <Name>EntityFrameworkCodeFirst</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EntityFramework\EntityFrameworkDBFirst.csproj">
+      <Project>{2841fc6e-e0c3-47ed-809d-99d82db98d75}</Project>
+      <Name>EntityFrameworkDBFirst</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LinqToSql\LinqToSql.csproj">
       <Project>{32267766-f31a-4d1d-9711-195189a32d10}</Project>
       <Name>LinqToSql</Name>

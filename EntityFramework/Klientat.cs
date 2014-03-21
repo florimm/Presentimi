@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFramework
+namespace EntityFrameworkDBFirst
 {
     using System;
     using System.Collections.Generic;

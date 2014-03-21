@@ -10,7 +10,7 @@ namespace DataAccessPresentation
         public MainForm()
         {
             InitializeComponent();
-            var data = ObjectFactory.GetAllInstances<IDataResult>();
+            var data = ObjectFactory.GetAllInstances<IName>();
             foreach (var dataResult in data)
             {
                 cboAccessData.Items.Add(dataResult.Name);
@@ -19,8 +19,11 @@ namespace DataAccessPresentation
 
         private void btnParaqit_Click(object sender, EventArgs e)
         {
-            var dr = ObjectFactory.GetNamedInstance<IDataResult>(cboAccessData.SelectedItem + "." + "DataAccess");
-            var result = dr.Execute();
+            var dr = (IDataResult)ObjectFactory.GetNamedInstance<IName>(cboAccessData.SelectedItem + "." + "DataAccess");
+
+            var result = dr.Rezultati();
+            lvKlientet.Items.Clear();
+            lvFaturat.Items.Clear();
             foreach (var klienti in result)
             {
                 var ki = new KlientiListViewItem(klienti);

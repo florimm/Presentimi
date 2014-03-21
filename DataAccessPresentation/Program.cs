@@ -17,7 +17,7 @@ namespace DataAccessPresentation
             {
                 x.WithDefaultConventions();
                 x.AssembliesFromApplicationBaseDirectory();
-                x.AddAllTypesOf<IDataResult>().NameBy(n=> n.FullName);
+                x.AddAllTypesOf<IName>().NameBy(n=> n.FullName);
             }));
 
             Application.EnableVisualStyles();

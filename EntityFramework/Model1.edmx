@@ -82,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DataEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DataTestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Faturats" EntityType="Self.Faturat" />
           <EntitySet Name="Klientats" EntityType="Self.Klientat" />
           <AssociationSet Name="FK_Faturat_Klientat" Association="Self.FK_Faturat_Klientat">
@@ -95,7 +95,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DataTestModelStoreContainer" CdmEntityContainer="DataEntities">
+        <EntityContainerMapping StorageEntityContainer="DataTestModelStoreContainer" CdmEntityContainer="DataTestEntities">
           <EntitySetMapping Name="Faturats">
             <EntityTypeMapping TypeName="DataTestModel.Faturat">
               <MappingFragment StoreEntitySet="Faturat">

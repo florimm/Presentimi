@@ -1,23 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Common;
 
 namespace LinqToSql
 {
-    public class DataAccess : IDataResult
+    public class DataAccess : IExecutable, IAdd, IUpdate, IDataResult
     {
+        public void Execute()
+        {
+            System.Diagnostics.Debugger.Break();
+            var rezultati = Rezultati();
+            Add(new Common.Klienti() { Adresa = "Adresa => Linq to Sql", Emri = "Linq", Mbiemri = "to Sql" });
+            Update(rezultati[0]);
+        }
         public string Name
         {
             get { return "LinqToSql"; }
         }
 
-        public List<Klienti> Execute()
+        public void Add(Klienti k)
         {
             var ac = new DataContextDataContext();
-            ac.LoadOptions.AssociateWith<Klientat>(t=> t.Faturats);
+            ac.Klientats.InsertOnSubmit(new Klientat
+            {
+                Adresa = k.Adresa,
+                Emri = k.Emri,
+                Mbiemri = k.Mbiemri
+            });
+            ac.SubmitChanges();
+        }
+
+        public void Update(Klienti k)
+        {
+            var ac = new DataContextDataContext();
+            var klient = ac.Klientats.Single(t => t.ID == k.ID);
+            klient.Emri = k.Emri;
+            klient.Mbiemri = k.Mbiemri;
+            klient.Adresa = k.Adresa;
+            ac.SubmitChanges();
+        }
+
+        public List<Klienti> Rezultati()
+        {
+            var ac = new DataContextDataContext();
+            var options = new DataLoadOptions();
+            options.LoadWith<Klientat>(t => t.Faturats);
+            ac.LoadOptions = options;
             var data = ac.Klientats.ToList();
 
             var ls = new List<Common.Klienti>();
@@ -42,7 +71,7 @@ namespace LinqToSql
 
     public partial class DataContextDataContext
     {
-        public DataContextDataContext() : this(System.Configuration.ConfigurationManager.ConnectionStrings["conn"].ConnectionString)
+        public DataContextDataContext() : this(ConnectionFactory.ConnectionString())
         {
             
         }

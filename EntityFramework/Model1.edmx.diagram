@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="317ac5a0cc144e218282d2f138b7054c" Name="Diagram1">
+      <Diagram DiagramId="9dc8ee95392e4a2ea0b5ae338ec9718a" Name="Diagram1">
         <EntityTypeShape EntityType="DataTestModel.Faturat" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DataTestModel.Klientat" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DataTestModel.FK_Faturat_Klientat" ManuallyRouted="false" />

@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityFramework
+namespace EntityFrameworkDBFirst
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DataEntities : DbContext
+    public partial class DataTestEntities : DbContext
     {
-        public DataEntities()
-            : base("name=DataEntities")
+        public DataTestEntities()
+            : base("name=DataTestEntities")
         {
         }
     
